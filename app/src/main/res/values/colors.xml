@@ -11,5 +11,6 @@
     <color name="baby_mustard">#FFE252</color>
     <color name="baby_gray">#C5C5C5</color>
     <color name="almost_black">#1D1D1D</color>
-
+    <color name="letra">#C5C5C5</color>
+    <color name="grisclaro">#9E9E9E</color>
 </resources>
