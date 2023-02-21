@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import android.widget.TextView
 class CatalogActivity : AppCompatActivity() {
 
     var adapter: MovieAdapter? = null
-    var seriesAdapter: MovieAdapter? = null
+    //var seriesAdapter: MovieAdapter? = null
     var movies = ArrayList<Movie>()
     var series = ArrayList<Movie>()
 
@@ -25,7 +26,7 @@ class CatalogActivity : AppCompatActivity() {
 
         loadMovies()
         adapter = MovieAdapter(this, movies)
-        seriesAdapter = MovieAdapter(this, series)
+       // seriesAdapter = MovieAdapter(this, series)
 
         var gridMovies: GridView = findViewById(R.id.movies_catalog)
 
@@ -124,13 +125,16 @@ class CatalogActivity : AppCompatActivity() {
             title.setText(movie.title)
 
             image.setOnClickListener {
-
+                var seatsAvailable = 20 - movie.seats.size
+                Log.d("SEATS", "$seatsAvailable" )
                 var intent = Intent(context, MovieDetail::class.java)
                 intent.putExtra("title",  movie.title)
                 intent.putExtra("synopsis", movie.sinopsis)
                 intent.putExtra("header", movie.header)
                 intent.putExtra("image", movie.image)
-                intent.putExtra("numberSeats", (20 - movie.seats.size))
+                intent.putExtra("numberSeats", seatsAvailable)
+                intent.putExtra("pos", p0)
+
                 context!!.startActivity(intent)
 
 

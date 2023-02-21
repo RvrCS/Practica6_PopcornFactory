@@ -11,10 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var button: Button = findViewById(R.id.button_getIn)
+        val intent = Intent(this, CatalogActivity::class.java)
+
 
         button.setOnClickListener {
 
-            var intent = Intent(this, CatalogActivity::class.java)
+
             this.startActivity(intent)
         }
     }
